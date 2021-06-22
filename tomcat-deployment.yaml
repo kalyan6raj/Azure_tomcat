@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: tomee-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-app
+      app: tomee-app
   template:
     metadata:
       labels:
-        app: nginx-app
+        app: tomee-app
     spec:
       containers:
-      - name: nginx-container
-        image: nginx
+      - name: tomee-container
+        image: tomee
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: tomee-service
 spec:
   ports:
   - name: http
-    targetPort: 80
-    port: 80
+    targetPort: 7070
+    port: 8080
   selector:
-    app: nginx-app
+    app: tomee-app
   type: LoadBalancer
