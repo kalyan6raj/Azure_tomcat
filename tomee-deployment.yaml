@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-deployment
+  name: tomee-deployment
 spec:
   replicas: 1
   selector:
@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
       - name: tomee-container
-        image: wordpress
+        image: tomee
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-service
+  name: tomee-service
 spec:
   ports:
   - name: http
