@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomcat-app
+  template:
+    metadata:
+      labels:
+        app: tomcat-app
+    spec:
+      containers:
+      - name: tomcat-container
+        image: tomcat
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-service
+spec:
+  ports:
+  - name: http
+    targetPort: 8080
+    port: 8080
+  selector:
+    app: tomcat-app
+  type: LoadBalancer
