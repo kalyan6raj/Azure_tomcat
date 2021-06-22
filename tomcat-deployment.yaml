@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: tomcat-container
-        image: tomcat
+        image: tomee
 ---
 apiVersion: v1
 kind: Service
